@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Flex, HStack, Heading, Text } from "@chakra-ui/layout"
 import { Button } from '@chakra-ui/button';
 import { Image } from '@chakra-ui/image';
+import {FaGithub, FaChrome, FaTwitter} from 'react-icons/fa';
 
 export const Feed = () => {
     return <Box maxWidth={'1200px'} mx={'auto'}>
@@ -14,9 +15,9 @@ export const Feed = () => {
                 </Box>
             </Flex>
             <HStack>
-                <Button>View Source</Button>
-                <Button colorScheme='red'>Use Extension</Button>
-                <Button colorScheme='purple'>Tweet</Button>
+                <Button leftIcon={<FaGithub />}>View Source</Button>
+                <Button leftIcon={<FaChrome />} colorScheme='red'>Use Extension</Button>
+                <Button leftIcon={<FaTwitter />} colorScheme='purple'>Tweet</Button>
             </HStack>
         </Flex>
     </Box>;
