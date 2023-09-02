@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ChakraProvider, CSSReset } from '@chakra-ui/react'
+import { App } from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <h1>Hello World</h1>
+    <ChakraProvider>
+      <CSSReset />
+      <App />
+    </ChakraProvider>
   </React.StrictMode>
 );
