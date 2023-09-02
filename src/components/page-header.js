@@ -13,7 +13,7 @@ export const PageHeader = () => {
         <Button leftIcon={<FaChrome />} colorScheme="red">
           Use Extension
         </Button>
-        <Button leftIcon={<FaTwitter />} colorScheme="purple">
+        <Button leftIcon={<FaTwitter />} colorScheme="twitter">
           Tweet
         </Button>
       </HStack>
