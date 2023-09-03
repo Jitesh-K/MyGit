@@ -6,6 +6,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Select,
 } from "@chakra-ui/react";
 import { FaAngleDown } from "react-icons/fa";
 import languages from "../data/languages.json";
@@ -13,7 +14,12 @@ import languages from "../data/languages.json";
 export const Filters = () => {
   return (
     <Flex>
-      <Menu>
+      <Select>
+        {languages.map((language) => (
+          <option value={language.value}>{language.title}</option>
+        ))}
+      </Select>
+      {/* <Menu>
         <MenuButton as={Button} leftIcon={<FaAngleDown />}>
           Languages
         </MenuButton>
@@ -22,7 +28,7 @@ export const Filters = () => {
             <MenuItem>{x.title}</MenuItem>
           ))}
         </MenuList>
-      </Menu>
+      </Menu> */}
     </Flex>
   );
 };
