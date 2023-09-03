@@ -1,8 +1,10 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/layout";
+import { Box, Flex, SimpleGrid } from "@chakra-ui/layout";
 import { PageHeader } from "./components/page-header";
 import { Grouptitle } from "./components/group-title";
 import { Filters } from "./components/filters";
+import { Repo } from "./components/repo";
+import { Button, Text } from "@chakra-ui/react";
 
 export const Feed = () => {
   return (
@@ -11,6 +13,20 @@ export const Feed = () => {
       <Flex alignItems={"center"} justifyContent={"space-between"} mt={"10px"}>
         <Grouptitle />
         <Filters />
+      </Flex>
+      <SimpleGrid columns={3} spacing={'15px'} mt={'10px'}>
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+        <Repo />
+      </SimpleGrid>
+      <Flex alignItems={'center'} justifyContent={'center'} my={'20px'}>
+        <Button bg={'blue.500'} ><Text color={'white'}>Load new group</Text></Button>
       </Flex>
     </Box>
   );
