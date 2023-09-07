@@ -11,8 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FaCodeBranch, FaExclamationCircle, FaStar } from "react-icons/fa";
 
-export const Repo = (props) => {
-  const isListView = false;
+export const Repo = ({isListView}) => {
 
   return (
     <Flex

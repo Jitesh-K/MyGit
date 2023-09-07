@@ -15,18 +15,18 @@ export const Feed = () => {
         <Filters />
       </Flex>
       <SimpleGrid columns={3} spacing={'15px'} mt={'10px'}>
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
-        <Repo />
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
+        <Repo isListView={false}/>
       </SimpleGrid>
       <Flex alignItems={'center'} justifyContent={'center'} my={'20px'}>
-        <Button bg={'blue.500'} ><Text color={'white'}>Load new group</Text></Button>
+        <Button bg={'blue.500'}><Text color={'white'}>Load new group</Text></Button>
       </Flex>
     </Box>
   );
