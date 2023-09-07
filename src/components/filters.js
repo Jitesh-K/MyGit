@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
+  Box,
   Button,
   HStack,
   Menu,
@@ -11,17 +12,25 @@ import {
 import { FaCalendar, FaList, FaTable } from "react-icons/fa";
 import languages from "../data/languages.json";
 
-export const Filters = ({ onViewChange }) => {
-  const [viewType, setViewType] = useState("grid");
-
-  useEffect(() => {
-    onViewChange(viewType);
-  }, [viewType, onViewChange]);
+export const Filters = ({
+  viewType,
+  onViewChange,
+  dateJump,
+  onDateJump,
+  language,
+  onLanguageChange,
+}) => {
   return (
     <HStack>
-      <Select bg={"white"}>
+      <Select
+        value={language}
+        onChange={(e) => onLanguageChange(e.target.value)}
+        bg={"white"}
+      >
         {languages.map((language) => (
-          <option value={language.value}>{language.title}</option>
+          <option key={language.value} value={language.value}>
+            {language.title}
+          </option>
         ))}
       </Select>
       <Menu>
@@ -34,27 +43,28 @@ export const Filters = ({ onViewChange }) => {
           fontWeight={"400"}
           leftIcon={<FaCalendar />}
         >
-          Actions
+          <Box as="span" textTransform={"capitalize"}>
+            {dateJump}
+          </Box>
         </MenuButton>
         <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
+          <MenuItem onClick={() => onDateJump("day")}>Daily</MenuItem>
+          <MenuItem onClick={() => onDateJump("week")}>Weekly</MenuItem>
+          <MenuItem onClick={() => onDateJump("month")}>Monthly</MenuItem>
+          <MenuItem onClick={() => onDateJump("year")}>Yearly</MenuItem>
         </MenuList>
       </Menu>
       <HStack spacing={0} borderWidth={"thin"} ml>
         <Button
           leftIcon={<FaTable />}
-          onClick={() => setViewType("grid")}
+          onClick={() => onViewChange("grid")}
           bg={viewType === "grid" ? "gray.200" : "white"}
         >
           Grid
         </Button>
         <Button
           leftIcon={<FaList />}
-          onClick={() => setViewType("list")}
+          onClick={() => onViewChange("list")}
           bg={viewType === "list" ? "gray.200" : "white"}
         >
           List
