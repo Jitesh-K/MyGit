@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   HStack,
@@ -11,7 +11,12 @@ import {
 import { FaCalendar, FaList, FaTable } from "react-icons/fa";
 import languages from "../data/languages.json";
 
-export const Filters = () => {
+export const Filters = ({ onViewChange }) => {
+  const [viewType, setViewType] = useState("grid");
+
+  useEffect(() => {
+    onViewChange(viewType);
+  }, [viewType, onViewChange]);
   return (
     <HStack>
       <Select bg={"white"}>
@@ -23,9 +28,9 @@ export const Filters = () => {
         <MenuButton
           as={Button}
           bg={"white"}
-          borderWidth={'thin'}
-          pl={'5'}
-          pr={'20'}
+          borderWidth={"thin"}
+          pl={"5"}
+          pr={"20"}
           fontWeight={"400"}
           leftIcon={<FaCalendar />}
         >
@@ -39,9 +44,21 @@ export const Filters = () => {
           <MenuItem>Attend a Workshop</MenuItem>
         </MenuList>
       </Menu>
-      <HStack spacing={0} borderWidth={'thin'} ml>
-        <Button leftIcon={<FaTable />} bg={'white'}>Grid</Button>
-        <Button leftIcon={<FaList />} bg={'white'}>List</Button>
+      <HStack spacing={0} borderWidth={"thin"} ml>
+        <Button
+          leftIcon={<FaTable />}
+          onClick={() => setViewType("grid")}
+          bg={viewType === "grid" ? "gray.200" : "white"}
+        >
+          Grid
+        </Button>
+        <Button
+          leftIcon={<FaList />}
+          onClick={() => setViewType("list")}
+          bg={viewType === "list" ? "gray.200" : "white"}
+        >
+          List
+        </Button>
       </HStack>
     </HStack>
   );
