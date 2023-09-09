@@ -4,7 +4,6 @@ import { PageHeader } from "./components/page-header";
 import { Grouptitle } from "./components/group-title";
 import { Filters } from "./components/filters";
 import { Repo } from "./components/repo";
-import { Button, Text } from "@chakra-ui/react";
 import moment from "moment";
 import { useFetch } from "use-http";
 
@@ -81,11 +80,6 @@ export const Feed = () => {
         <Repo isListView={viewType === "list"} />
         <Repo isListView={viewType === "list"} />
       </SimpleGrid>
-      <Flex alignItems={"center"} justifyContent={"center"} my={"20px"}>
-        <Button bg={"blue.500"}>
-          <Text color={"white"}>Load new group</Text>
-        </Button>
-      </Flex>
     </Box>
   );
 };
