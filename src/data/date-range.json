@@ -1,0 +1,12 @@
+[
+  { "title": "Last 24 Hours", "unit": 1, "duration": "Day" },
+  { "title": "Last Week", "unit": 1, "duration": "Week" },
+  { "title": "Last 2 Weeks", "unit": 2, "duration": "Week" },
+  { "title": "Last Month", "unit": 1, "duration": "Month" },
+  { "title": "Last Quarter", "unit": 3, "duration": "Month" },
+  { "title": "Last 6 Months", "unit": 6, "duration": "Month" },
+  { "title": "Last Year", "unit": 1, "duration": "Year" },
+  { "title": "Last 2 Years", "unit": 2, "duration": "Year" },
+  { "title": "Last 5 Years", "unit": 5, "duration": "Year" },
+  { "title": "Last Decade", "unit": 10, "duration": "Year" }
+]
