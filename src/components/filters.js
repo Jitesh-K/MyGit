@@ -18,6 +18,7 @@ export const Filters = ({
   dateJump,
   onDateJump,
   language,
+  languages,
   onLanguageChange,
 }) => {
   return (
