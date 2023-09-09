@@ -10,7 +10,7 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { FaCalendar, FaList, FaTable } from "react-icons/fa";
-import languages from "../data/languages.json";
+import dateRanges from "../data/date-range.json";
 
 export const Filters = ({
   viewType,
@@ -40,19 +40,25 @@ export const Filters = ({
           bg={"white"}
           borderWidth={"thin"}
           pl={"5"}
-          pr={"20"}
+          pr={"36"}
           fontWeight={"400"}
           leftIcon={<FaCalendar />}
         >
           <Box as="span" textTransform={"capitalize"}>
-            {dateJump}
+            {dateJump.title}
           </Box>
         </MenuButton>
         <MenuList>
-          <MenuItem onClick={() => onDateJump("day")}>Daily</MenuItem>
-          <MenuItem onClick={() => onDateJump("week")}>Weekly</MenuItem>
-          <MenuItem onClick={() => onDateJump("month")}>Monthly</MenuItem>
-          <MenuItem onClick={() => onDateJump("year")}>Yearly</MenuItem>
+          {dateRanges.map((x) => (
+            <MenuItem
+              key={x.title}
+              onClick={() =>
+                onDateJump(dateRanges.find((y) => y.title === x.title))
+              }
+            >
+              {x.title}
+            </MenuItem>
+          ))}
         </MenuList>
       </Menu>
       <HStack spacing={0} borderWidth={"thin"} ml>
