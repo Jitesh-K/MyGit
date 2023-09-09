@@ -5,11 +5,11 @@ import { Grouptitle } from "./components/group-title";
 import { Filters } from "./components/filters";
 import { Repo } from "./components/repo";
 import { Button, Text } from "@chakra-ui/react";
-import moment, { months, isBefore } from "moment";
+import moment from "moment";
 import { useFetch } from "use-http";
 
 export const Feed = () => {
-  const { loading, error, get } = useFetch("https://api.github.com");
+  const { get } = useFetch("https://api.github.com");
   const [viewType, setViewType] = useState("grid");
   const [dateJump, setDateJump] = useState({
     title: "Last 24 Hours",
