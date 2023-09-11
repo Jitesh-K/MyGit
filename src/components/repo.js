@@ -11,8 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FaCodeBranch, FaExclamationCircle, FaStar } from "react-icons/fa";
 
-export const Repo = ({isListView}) => {
-
+export const Repo = ({ repo, isListView }) => {
   return (
     <Flex
       borderWidth={1}
@@ -24,14 +23,9 @@ export const Repo = ({isListView}) => {
       <Flex flex={1} flexDir="column">
         {!isListView && (
           <Flex mb="15px" as="a" href="">
-            <Image
-              src="https://randomuser.me/api/portraits/med/men/2.jpg"
-              w={"35px"}
-              h={"35px"}
-              rounded="5px"
-            />
+            <Image src={repo.image} w={"35px"} h={"35px"} rounded="5px" />
             <Box ml="10px">
-              <Heading fontSize="16px">Jitesh Kumar</Heading>
+              <Heading fontSize="16px">{repo.name}</Heading>
               <Text fontSize="13px">View profile</Text>
             </Box>
           </Flex>
@@ -42,33 +36,21 @@ export const Repo = ({isListView}) => {
             <Flex fontSize="19px" fontWeight={700} color="purple.700" mb="3px">
               {isListView && (
                 <>
-                  <Text
-                    as="a"
-                    href="https://github.com/Jitesh-K/topgit"
-                    target="_blank"
-                  >
-                    Jitesh-K
+                  <Text as="a" href={repo.url} target="_blank">
+                    {repo.user_name}
                   </Text>
                   &nbsp;/&nbsp;
                 </>
               )}
-              <Text
-                as="a"
-                href="https://github.com/Jitesh-K/topgit"
-                target="_blank"
-              >
-                TopGit
+              <Text as="a" href={repo.url} target="_blank">
+                {repo.project}
               </Text>
             </Flex>
             <Text fontSize="14px" color="gray.600">
               <Box as={"span"} d={["none", "none", "inline", "inline"]}>
                 Built by &middot;{" "}
-                <Link
-                  fontWeight={600}
-                  href="https://github.com/Jitesh-K"
-                  target="_blank"
-                >
-                  Jitesh-K
+                <Link fontWeight={600} href={repo.url} target="_blank">
+                  {repo.user_name}
                 </Link>{" "}
                 &middot;
               </Box>{" "}
@@ -76,14 +58,14 @@ export const Repo = ({isListView}) => {
           </Box>
 
           <Text fontSize="14px" color="gray.900">
-            List the most starred projects on github
+            {repo.description}
           </Text>
         </Box>
 
         <HStack spacing="10px">
           <Button
             as="a"
-            href="https://github.com/Jitesh-K"
+            href={repo.url}
             cursor="pointer"
             leftIcon={<FaStar />}
             variant="link"
@@ -92,12 +74,12 @@ export const Repo = ({isListView}) => {
             target="_blank"
             _hover={{ textDecor: "none" }}
           >
-            44
+            {repo.watchers}
           </Button>
           <Button
             as="a"
             cursor="pointer"
-            href="https://github.com/Jitesh-K"
+            href={repo.url}
             leftIcon={<FaCodeBranch />}
             variant="link"
             fontSize="13px"
@@ -105,12 +87,12 @@ export const Repo = ({isListView}) => {
             target="_blank"
             _hover={{ textDecor: "none" }}
           >
-            34
+            {repo.fork}
           </Button>
           <Button
             as="a"
             cursor="pointer"
-            href="https://github.com/Jitesh-K"
+            href={repo.url}
             target="_blank"
             leftIcon={<FaExclamationCircle />}
             variant="link"
@@ -118,17 +100,12 @@ export const Repo = ({isListView}) => {
             iconSpacing="4px"
             _hover={{ textDecor: "none" }}
           >
-            23
+            {repo.issues}
           </Button>
         </HStack>
       </Flex>
       {isListView && (
-        <Image
-          src="https://randomuser.me/api/portraits/med/men/2.jpg"
-          w={"105px"}
-          h={"105px"}
-          rounded="100%"
-        />
+        <Image src={repo.image} w={"105px"} h={"105px"} rounded="100%" />
       )}
     </Flex>
   );
