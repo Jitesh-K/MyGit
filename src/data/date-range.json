@@ -1,4 +1,5 @@
 [
+  { "title": "All", "unit": 99999, "duration": "Year" },
   { "title": "Last 24 Hours", "unit": 1, "duration": "Day" },
   { "title": "Last Week", "unit": 1, "duration": "Week" },
   { "title": "Last 2 Weeks", "unit": 2, "duration": "Week" },

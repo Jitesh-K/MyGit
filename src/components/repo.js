@@ -57,8 +57,8 @@ export const Repo = ({ repo, isListView }) => {
             </Text>
           </Box>
 
-          <Text fontSize="14px" color="gray.900">
-            {repo.description}
+          <Text fontSize="13px" color="gray.900">
+            {repo.description ?? 'No Description'}
           </Text>
         </Box>
 
