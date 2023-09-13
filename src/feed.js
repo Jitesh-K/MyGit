@@ -11,17 +11,16 @@ export const Feed = () => {
   const { get } = useFetch("https://api.github.com");
   const [viewType, setViewType] = useState("grid");
   const [dateJump, setDateJump] = useState({
-    title: "All",
-    unit: 9999,
+    title: "All Time",
+    unit: 100,
     duration: "Year",
   });
-  const [language, setLanguage] = useState('All');
-  const [languages, setLanguages] = useState([]); // TODO: Check this
+  const [language, setLanguage] = useState("All");
+  const [languages, setLanguages] = useState([]);
   const [createDate, setCreateDate] = useState("");
   const [repos, setRepos] = useState([]);
 
   useEffect(() => {
-    // console.log(dateJump);
     setCreateDate(moment().subtract(dateJump.unit, dateJump.duration).format());
   }, [dateJump]);
 
@@ -30,49 +29,39 @@ export const Feed = () => {
     try {
       (async () => {
         const response = await get("/users/jitesh-k/repos");
-        // console.log(response);
         if (response.length) {
-          // console.log(
-          //   response.map((x) => ({
-          //     project: x.name,
-          //     description: x.description,
-          //     fork: x.forks_count,
-          //     language: x.language,
-          //     issues: x.open_issues_count,
-          //     watchers: x.watchers_count,
-          //     image: x.owner.avatar_url,
-          //     user_name: x.owner.login,
-          //     filterApplied:
-          //       x.created_at && moment(createDate).isAfter(x.created_at),
-          //     url: x.url,
-          //   }))
-          // );
           setRepos(
-            response.map((x) => ({
-              id: x.id,
-              project: x.name,
-              description: x.description,
-              fork: x.forks_count,
-              language: x.language,
-              issues: x.open_issues_count,
-              watchers: x.watchers_count,
-              image: x.owner.avatar_url,
-              user_name: x.owner.login,
-              filterApplied:
-                x.created_at && moment(createDate).isAfter(x.created_at),
-              url: x.url,
-            }))
+            response
+              .map((x) => ({
+                id: x.id,
+                project: x.name,
+                description: x.description,
+                fork: x.forks_count,
+                language: x.language,
+                issues: x.open_issues_count,
+                watchers: x.watchers_count,
+                image: x.owner.avatar_url,
+                user_name: x.owner.login,
+                isAfter:
+                  x.created_at && moment(x.created_at).isAfter(createDate),
+                url: x.url,
+              }))
+              .filter((y) =>
+                language !== "All" ? y.language === language : y.isAfter
+              )
           );
           const allLanguages = Array.from(
             new Set(
               response.filter((x) => x.language !== null).map((y) => y.language)
             )
           );
-          setLanguages(['All',...allLanguages].map((x) => ({ title: x, value: x })));
+          setLanguages(
+            ["All", ...allLanguages].map((x) => ({ title: x, value: x }))
+          );
         }
       })();
     } catch (error) {}
-  }, [createDate, get]);
+  }, [createDate, get, language]);
 
   return (
     <Box maxWidth={"1200px"} mx={"auto"}>
